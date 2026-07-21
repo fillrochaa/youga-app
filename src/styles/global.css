@@ -1,0 +1,225 @@
+/* ============================================
+   YOUGA APP — Design System
+   Glassmorphism · tons terrosos · mobile first
+   ============================================ */
+
+:root {
+  /* Paleta terrosa */
+  --sand-50: #f6f0e4;
+  --sand-100: #efe6d4;
+  --sand-200: #e6d8bf;
+  --cream: #f0e8d8;
+  --taupe-400: #a89681;
+  --taupe-600: #8a7663;
+  --clay-400: #c98d68;
+  --clay-500: #b5714f;
+  --olive-500: #7a7c5f;
+  --cocoa-700: #4a3d31;
+  --cocoa-900: #322a21;
+
+  /* Vidro */
+  --glass-bg: rgba(255, 252, 245, 0.38);
+  --glass-bg-strong: rgba(255, 252, 245, 0.6);
+  --glass-bg-dark: rgba(50, 42, 33, 0.45);
+  --glass-border: rgba(255, 252, 245, 0.55);
+  --glass-border-dark: rgba(255, 252, 245, 0.18);
+  --glass-shadow: 0 8px 32px rgba(74, 61, 49, 0.18);
+  --glass-blur: blur(18px) saturate(1.3);
+
+  /* Tipografia */
+  --font-sans: "Archivo", system-ui, -apple-system, sans-serif;
+  --font-script: "Great Vibes", cursive;
+
+  /* Espaço & raio */
+  --radius-lg: 28px;
+  --radius-md: 20px;
+  --radius-sm: 14px;
+  --pad-page: 20px;
+
+  --safe-top: env(safe-area-inset-top, 0px);
+  --safe-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: var(--font-sans);
+  color: var(--cocoa-900);
+  background: var(--sand-100);
+  min-height: 100dvh;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+/* Fundo terroso com formas suaves atrás do vidro */
+.app-bg {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(160deg, #e9dcc5 0%, #dcc9ab 38%, #c9a684 100%);
+}
+.app-bg::before,
+.app-bg::after {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(70px);
+  opacity: 0.55;
+}
+.app-bg::before {
+  width: 65vw;
+  height: 65vw;
+  top: -12vw;
+  right: -18vw;
+  background: var(--clay-400);
+}
+.app-bg::after {
+  width: 70vw;
+  height: 70vw;
+  bottom: -20vw;
+  left: -22vw;
+  background: var(--olive-500);
+  opacity: 0.35;
+}
+
+/* Layout mobile-first: coluna central estreita */
+.shell {
+  max-width: 430px;
+  margin: 0 auto;
+  padding: calc(var(--pad-page) + var(--safe-top)) var(--pad-page)
+    calc(40px + var(--safe-bottom));
+  min-height: 100dvh;
+}
+
+/* ---------- Vidro ---------- */
+.glass {
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--glass-shadow);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+}
+
+.glass-strong {
+  background: var(--glass-bg-strong);
+}
+
+/* ---------- Tipografia ---------- */
+.display {
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: -0.02em;
+  line-height: 0.94;
+  color: var(--cocoa-900);
+}
+
+.thin {
+  font-weight: 250;
+  letter-spacing: 0.01em;
+}
+
+.script {
+  font-family: var(--font-script);
+  font-weight: 400;
+  color: var(--clay-500);
+  line-height: 1;
+}
+
+.eyebrow {
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  color: var(--taupe-600);
+}
+
+/* ---------- Botões ---------- */
+button {
+  font-family: inherit;
+  border: none;
+  background: none;
+  cursor: pointer;
+  color: inherit;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.btn-primary {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  padding: 16px;
+  border-radius: 999px;
+  background: var(--cocoa-900);
+  color: var(--cream);
+  font-size: 15px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  transition: transform 0.15s ease, opacity 0.15s ease;
+}
+.btn-primary:active {
+  transform: scale(0.97);
+}
+.btn-primary.done {
+  background: var(--olive-500);
+}
+
+.btn-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: var(--glass-bg-strong);
+  border: 1px solid var(--glass-border);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  font-size: 18px;
+  color: var(--cocoa-900);
+}
+
+/* ---------- Scrollbar discreto no strip ---------- */
+.no-scrollbar {
+  scrollbar-width: none;
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* ---------- Animações ---------- */
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.fade-up {
+  animation: fade-up 0.4s ease both;
+}
+
+@keyframes slide-in {
+  from {
+    opacity: 0;
+    transform: translateY(100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
