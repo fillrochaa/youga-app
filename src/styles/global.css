@@ -223,3 +223,109 @@ button {
     transform: translateY(0);
   }
 }
+
+/* ---------- Autenticação (login / cadastro) ---------- */
+.auth-shell {
+  max-width: 430px;
+  margin: 0 auto;
+  min-height: 100dvh;
+  padding: calc(var(--pad-page) + var(--safe-top)) var(--pad-page)
+    calc(32px + var(--safe-bottom));
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 28px;
+}
+
+.auth-head {
+  text-align: center;
+}
+.auth-head .display {
+  margin: 2px 0 10px;
+}
+
+.auth-card {
+  padding: 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.auth-tabs {
+  display: flex;
+  gap: 6px;
+  padding: 5px;
+  border-radius: 999px;
+  background: rgba(74, 61, 49, 0.08);
+}
+.auth-tab {
+  flex: 1;
+  padding: 10px;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--taupe-600);
+  transition: background 0.2s ease, color 0.2s ease;
+}
+.auth-tab.active {
+  background: var(--cream);
+  color: var(--cocoa-900);
+  box-shadow: 0 2px 10px rgba(74, 61, 49, 0.12);
+}
+
+.auth-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.auth-field input {
+  font-family: inherit;
+  font-size: 16px; /* >=16px evita zoom no iOS ao focar */
+  color: var(--cocoa-900);
+  padding: 14px 16px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--glass-border);
+  background: rgba(255, 252, 245, 0.55);
+  outline: none;
+  transition: border-color 0.2s ease, background 0.2s ease;
+}
+.auth-field input::placeholder {
+  color: var(--taupe-400);
+}
+.auth-field input:focus {
+  border-color: var(--clay-400);
+  background: rgba(255, 252, 245, 0.8);
+}
+
+.auth-msg {
+  font-size: 13.5px;
+  line-height: 1.35;
+  padding: 10px 12px;
+  border-radius: var(--radius-sm);
+}
+.auth-msg.error {
+  color: #7a2e1a;
+  background: rgba(181, 113, 79, 0.16);
+}
+.auth-msg.notice {
+  color: #3f4a2e;
+  background: rgba(122, 124, 95, 0.18);
+}
+
+.auth-foot {
+  text-align: center;
+  font-size: 14px;
+  color: var(--taupe-600);
+}
+.auth-link {
+  font-weight: 700;
+  color: var(--clay-500);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.btn-primary:disabled {
+  opacity: 0.6;
+}
